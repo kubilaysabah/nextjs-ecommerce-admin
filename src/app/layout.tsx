@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import { type ReactNode } from 'react'
-import { CssBaseline } from "@mui/material";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+import Theme from './theme'
 
 const roboto = Roboto({
   weight: '400',
@@ -22,10 +21,9 @@ export default function RootLayout({
   return (
       <html lang="en">
         <body className={roboto.className}>
-          <AppRouterCacheProvider>
-              <CssBaseline />
-              {children}
-          </AppRouterCacheProvider>
+            <Theme>
+                {children}
+            </Theme>
         </body>
       </html>
   )
