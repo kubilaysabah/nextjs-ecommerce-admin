@@ -5,7 +5,7 @@ import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } fr
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import type PasswordInputProps from './type';
 
-const PasswordInput: FC<PasswordInputProps> = ({ label, id, sx, required = false, disabled = false }: PasswordInputProps): ReactElement => {
+const PasswordInput: FC<PasswordInputProps> = ({ label, id, ...rest }: PasswordInputProps): ReactElement => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
 
     const handleClickShowPassword = () => {
@@ -17,11 +17,10 @@ const PasswordInput: FC<PasswordInputProps> = ({ label, id, sx, required = false
     }
 
     return (
-        <FormControl variant="outlined" fullWidth sx={sx}>
+        <FormControl variant="outlined" fullWidth>
             <InputLabel htmlFor={id}>{label}</InputLabel>
             <OutlinedInput
-                disabled={disabled}
-                required={required}
+                {...rest}
                 id={id}
                 type={showPassword ? 'text' : 'password'}
                 endAdornment={

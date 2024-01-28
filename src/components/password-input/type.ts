@@ -1,11 +1,7 @@
-import { type TextFieldProps } from '@mui/material'
+import { type OutlinedInputProps } from '@mui/material'
 
 type PasswordInputProps = {
-    id: string;
     label: string;
-    required?: boolean;
-    disabled?: boolean;
-    sx?: TextFieldProps['sx'];
-}
+} & OutlinedInputProps
 
 export default PasswordInputProps;

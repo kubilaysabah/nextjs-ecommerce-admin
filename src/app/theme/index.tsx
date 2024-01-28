@@ -8,12 +8,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import createCache from "@emotion/cache";
 import theme from './theme'
 
-function createEmotionCache() {
-    return createCache({ key: 'css' });
-}
-
 const Theme = ({ children }: { children: ReactNode }) => {
-    const cache = createEmotionCache();
+    const cache = createCache({ key: 'css' });
     return (
         <AppRouterCacheProvider>
             <CacheProvider value={cache}>
