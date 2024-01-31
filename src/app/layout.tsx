@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import { type ReactNode } from 'react'
+import Theme from './theme'
+import {CssBaseline} from "@mui/material";
 
 type Props = {
     children: ReactNode
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
       <html lang="en">
         <body className={roboto.className}>
-            {children}
+            <Theme>
+                {children}
+            </Theme>
         </body>
       </html>
   )
