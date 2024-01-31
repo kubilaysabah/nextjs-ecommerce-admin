@@ -1,5 +1,5 @@
+import RegisterForm from './form'
+
 export default function Register() {
-    return (
-        <h1></h1>
-    )
+    return <RegisterForm />
 }

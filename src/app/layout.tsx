@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import { type ReactNode } from 'react'
-import Theme from './theme'
+
+type Props = {
+    children: ReactNode
+}
 
 const roboto = Roboto({
   weight: '400',
@@ -15,15 +18,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
-  children: ReactNode
-}) {
+}: Props) {
   return (
       <html lang="en">
         <body className={roboto.className}>
-            <Theme>
-                {children}
-            </Theme>
+            {children}
         </body>
       </html>
   )
