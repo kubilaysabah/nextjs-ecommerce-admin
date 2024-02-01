@@ -1,15 +1,8 @@
 import { type ReactNode } from 'react'
+import Theme from '../../theme'
 
-type Props = {
-    children: ReactNode
+const Layout = ({ children }: { children: ReactNode }) => {
+    return children
 }
 
-const AuthLayout = ({ children }: Props) => {
-    return (
-        <main>
-            {children}
-        </main>
-    )
-}
-
-export default AuthLayout
+export default Layout;

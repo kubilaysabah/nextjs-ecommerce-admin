@@ -1,5 +1,5 @@
-import RegisterForm from './form'
+import Form from './form'
 
 export default function Register() {
-    return <RegisterForm />
+    return <Form />
 }

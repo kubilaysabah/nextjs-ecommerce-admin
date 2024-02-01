@@ -1,5 +1,5 @@
-import LoginForm from './form'
+import Form from './form'
 
 export default function Login() {
-    return <LoginForm />
+    return <Form />
 }
