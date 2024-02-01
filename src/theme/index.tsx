@@ -3,17 +3,24 @@
 import type {ReactNode} from "react";
 import {AppRouterCacheProvider} from "@mui/material-nextjs/v13-appRouter";
 import {CacheProvider} from "@emotion/react";
-import {ThemeProvider} from "@mui/material/styles";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import createCache from "@emotion/cache";
-import theme from './theme'
 
-function createEmotionCache() {
-    return createCache({ key: 'css' });
-}
+const theme = createTheme({
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    textTransform: 'none',
+                },
+            }
+        }
+    }
+});
 
 const Theme = ({ children }: { children: ReactNode }) => {
-    const cache = createEmotionCache();
+    const cache = createCache({ key: 'css' });
     return (
         <AppRouterCacheProvider>
             <CacheProvider value={cache}>

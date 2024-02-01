@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import { type ReactNode } from 'react'
-import Theme from './theme'
+import Theme from '@/theme'
 
 const roboto = Roboto({
   weight: '400',

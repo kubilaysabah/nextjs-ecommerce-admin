@@ -1,43 +1,39 @@
-"use client";
+"use client"
 
-import { Button, TextField, Box, Unstable_Grid2 as Grid } from '@mui/material';
-import PasswordInput from "@/components/password-input";
+import {
+    Unstable_Grid2 as Grid,
+    Box
+} from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+import { Input, PasswordInput, Button } from '@/components'
 
-const LoginForm = () => {
+const Form = () => {
+    const { spacing } = useTheme();
+
     return (
-        <Grid
-            container
-            alignItems={'center'}
-            justifyContent={'center'}
-            sx={{
-                minHeight: '100vh',
-                height: '100%',
-            }}
-        >
-            <Grid md={6} lg={4} xl={3}>
+        <Grid container minHeight={'100vh'} height={'100%'} alignItems={'center'} justifyContent={'center'}>
+            <Grid lg={4} xl={3}>
                 <Box component={'form'}>
-                    <TextField
-                        id="email"
-                        label="E-Mail"
-                        variant="outlined"
-                        fullWidth
+                    <Input
+                        type={'email'}
+                        id={'email'}
+                        label={'e-mail'}
                         sx={{
-                            marginBottom: '1.6rem'
+                            marginBottom: spacing(2)
                         }}
-                        required
                     />
                     <PasswordInput
                         id={'password'}
                         label={'Password'}
                         sx={{
-                            marginBottom: '1.6rem'
+                            marginBottom: spacing(2)
                         }}
                     />
-                    <Button type={"submit"} fullWidth variant="contained">{'Giriş Yap'}</Button>
+                    <Button type={'submit'} fullWidth variant={'contained'} color={'primary'}>{'Gönder'}</Button>
                 </Box>
             </Grid>
         </Grid>
     )
-};
+}
 
-export default LoginForm
+export default Form
