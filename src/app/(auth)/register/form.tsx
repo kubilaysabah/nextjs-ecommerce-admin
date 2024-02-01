@@ -56,14 +56,18 @@ const Form = () => {
                     }}>
                         <Grid md>
                             <PasswordInput
-                                id={'password'}
-                                label={'Password'}
+                                input={{
+                                    id: 'password',
+                                    label: 'Password',
+                                }}
                             />
                         </Grid>
                         <Grid md>
                             <PasswordInput
-                                id={'password-again'}
-                                label={'Password Again'}
+                                input={{
+                                    id: 'password-again',
+                                    label: 'Password Again',
+                                }}
                             />
                         </Grid>
                     </Grid>

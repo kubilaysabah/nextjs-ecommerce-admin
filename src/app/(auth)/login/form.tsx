@@ -23,10 +23,14 @@ const Form = () => {
                         }}
                     />
                     <PasswordInput
-                        id={'password'}
-                        label={'Password'}
-                        sx={{
-                            marginBottom: spacing(2)
+                        input={{
+                            id: 'password',
+                            label: 'Password',
+                        }}
+                        formControl={{
+                          sx: {
+                              marginBottom: spacing(2)
+                          }
                         }}
                     />
                     <Button type={'submit'} fullWidth variant={'contained'} color={'primary'}>{'Gönder'}</Button>
