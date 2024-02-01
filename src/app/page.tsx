@@ -2,6 +2,6 @@ import { Button } from '@mui/material'
 
 export default function Home() {
   return (
-    <Button variant={"contained"} color={"primary"}>text</Button>
+    <Button variant={"contained"} color={"primary"}>test</Button>
   )
 }
