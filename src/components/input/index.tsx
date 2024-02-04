@@ -1,8 +1,21 @@
-import { TextField, TextFieldProps } from '@mui/material'
+import {FormControl, TextField, FormControlProps, type TextFieldProps, Typography} from '@mui/material'
 
-const Input = (props: TextFieldProps) => {
+type InputProps = {
+    input?: TextFieldProps
+    formControl?: FormControlProps
+    error?: string
+}
+
+const Input = ({ input, formControl, error }: InputProps) => {
     return (
-        <TextField fullWidth variant="outlined" {...props} />
+        <FormControl fullWidth {...formControl}>
+            <TextField fullWidth variant="outlined" {...input} />
+            {error && (
+                <Typography aria-live="polite" role="status" color={'error'}>
+                    {error}
+                </Typography>
+            )}
+        </FormControl>
     )
 }
 

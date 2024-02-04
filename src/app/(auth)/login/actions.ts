@@ -1,39 +1,38 @@
 'use server'
 
-import Joi from 'joi'
+import { object, string, ValidationError } from 'yup';
 
 type Return = {
-    message: string
+    [key: string]: string
 }
 
-type State = { email: string, password: string }
-
-const schema = async () => {
-    return Joi.object<State>({
-        email:
-            Joi.string().label('E-posta adresi boş bırakılamaz')
-            .email().label('Lütfen geçerli bir e-posta adresi giriniz')
-            .required().label('E-posta adresi boş bırakılamaz'),
-        password:
-            Joi.string().label('Şifre boş bırakılamaz')
-            .min(6).label('Şifreniz en az 6 haneli olmalı')
-            .max(20).label('Şifreniz en fazla 20 haneli olmalı')
-            .required().label('Şifre boş bırakılamaz')
+const schema = () => {
+    return object({
+        email: string().email('Lütfen geçerli bir e-posta adresi giriniz').required('Lütfen bir e-posta adresi giriniz'),
+        password: string().required('Lütfen şifre giriniz').min(8, 'Şifre 8 karakterden kısa olamaz').max(32, 'Şifreniz en fazla 32 karakter olmalı')
     })
 }
 
 export async function login(prevState: Return, formData: FormData): Promise<Return> {
     const data = Object.fromEntries(formData.entries())
+    const errors = { ...prevState };
 
     try {
-        await (await schema()).validateAsync(data)
+        await schema().validate(data, { abortEarly: false })
 
-        return {
-            message: ''
-        }
+        return errors;
     } catch (err) {
-        return {
-            message: ''
+        if (err instanceof ValidationError) {
+            err.inner.forEach((error) => {
+                if (error.path && typeof error.path === "string") {
+                    errors[error.path] = error.message
+                }
+            });
+
+            return errors
+
+        } else {
+            throw err;
         }
     }
 }

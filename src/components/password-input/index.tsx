@@ -7,7 +7,7 @@ import {
     IconButton,
     type OutlinedInputProps,
     type FormControlProps,
-    type IconButtonProps
+    type IconButtonProps, Typography
 } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 
@@ -15,9 +15,10 @@ type Props = {
     input?: OutlinedInputProps
     formControl?: FormControlProps
     iconButton?: IconButtonProps
+    error?: string;
 }
 
-const PasswordInput = ({ input = {}, formControl = {}, iconButton = {} }:Props) => {
+const PasswordInput = ({ input = {}, formControl = {}, iconButton = {}, error }:Props) => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
 
     return (
@@ -40,6 +41,11 @@ const PasswordInput = ({ input = {}, formControl = {}, iconButton = {} }:Props) 
                 }
                 {...input}
             />
+            {error && (
+                <Typography aria-live="polite" role="status" color={'error'}>
+                    {error}
+                </Typography>
+            )}
         </FormControl>
     )
 }
