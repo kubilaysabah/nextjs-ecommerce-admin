@@ -6,6 +6,7 @@ import {CacheProvider} from "@emotion/react";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import createCache from "@emotion/cache";
+import { SnackbarProvider } from 'notistack';
 
 const theme = createTheme({
     components: {
@@ -26,7 +27,9 @@ const Theme = ({ children }: { children: ReactNode }) => {
             <CacheProvider value={cache}>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-                    {children}
+                    <SnackbarProvider maxSnack={3}>
+                        {children}
+                    </SnackbarProvider>
                 </ThemeProvider>
             </CacheProvider>
         </AppRouterCacheProvider>
